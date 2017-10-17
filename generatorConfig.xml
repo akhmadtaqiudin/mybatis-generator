@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <!-- !!!! Driver Class Path !!!! -->
+    <classPathEntry location="url penyimpanan/postgresql-9.2-1002.jdbc4.jar"/>
+
+    <context id="context" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!-- fungsi untuk koneksi database -->
+        <jdbcConnection driverClass="org.postgresql.Driver"
+                        connectionURL="jdbc:postgresql://localhost:5432/nama_database" userId="postgres" password="password"/>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- fungsi untuk model -->
+        <javaModelGenerator targetPackage="com.id.modul.model" targetProject="url penyimpanan">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        
+        <!-- fungsi untuk mapper -->
+        <javaClientGenerator targetPackage="com.id.modul.mapper" targetProject="url penyimpanan"
+                             type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- fungsi untuk mapper XML -->
+        <sqlMapGenerator targetPackage="mapper.modul" targetProject="url penyimpanan">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>        
+
+        <!-- fungsi untuk database -->
+        <table tableName="tabel_database" domainObjectName="ModelJava">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <property name="modelOnly" value="false"/>
+        </table>
+    </context>
+</generatorConfiguration>
